@@ -34,4 +34,3 @@ def contadorWhile():
     
         contador = contador + 1
 
-contadorWhile()
