@@ -1,0 +1,3 @@
+Uma extensão interessante para o VSCode é o "Live Server". Ela permite a atualização automática do navegador ao salvar um arquivo HTML, CSS ou JavaScript. Escolhi essa extensão porque facilita o desenvolvimento web, agilizando o teste de mudanças sem a necessidade de atualizar manualmente o navegador. Além disso, é muito útil para trabalhar em projetos que envolvem HTML e CSS, já que oferece uma visualização em tempo real das alterações feitas no código.
+
+Outra extensão complementar seria o "Prettier", que automatiza a formatação do código, mantendo HTML, CSS e JavaScript organizados e padronizados.
