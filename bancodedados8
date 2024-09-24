@@ -1,0 +1,22 @@
+CREATE PROCEDURE RelatorioDiarioVendas
+AS
+BEGIN
+    -- Declaração de variáveis
+    DECLARE @dataInicio DATE = CAST(GETDATE() AS DATE); -- Data de hoje
+    DECLARE @dataFim DATE = CAST(GETDATE() AS DATE); -- Data de hoje
+
+    -- Seleciona a quantidade de produtos vendidos por dia
+    SELECT 
+        p.id AS ProdutoID,
+        p.nome AS NomeProduto,
+        ISNULL(SUM(v.quantidade), 0) AS QuantidadeVendida,
+        @dataInicio AS Data
+    FROM 
+        Produtos p
+    LEFT JOIN 
+        Vendas v ON p.id = v.produto_id AND CAST(v.data AS DATE) BETWEEN @dataInicio AND @dataFim
+    GROUP BY 
+        p.id, p.nome
+    ORDER BY 
+        p.nome;
+END;
