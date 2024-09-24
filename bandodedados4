@@ -1,0 +1,104 @@
+1. Select: Mostrar informações apenas dos alunos aprovados (nota acima de 7,0)
+Consulta SQL:
+
+sql
+Copiar código
+SELECT * 
+FROM ALUNO
+WHERE NOTA > 7.0;
+Resultado esperado:
+
+P.NOME	U.NOME	MATRÍCULA	SÉRIE	DISCIPLINA	NOTA
+Luiz	Silva	6215	1º ano	Português	8,0
+André	Carvalho	4521	3º ano	Matemática	9,5
+Alan	Vilela	3285	1º ano	História	8,0
+Figueiredo	Santos	4598	2º ano	Geografia	9,0
+2. Select: Informações dos alunos do primeiro ano com nota maior ou igual a 8,0
+Consulta SQL:
+
+sql
+Copiar código
+SELECT * 
+FROM ALUNO
+WHERE SÉRIE = '1º ano' AND NOTA >= 8.0;
+Resultado esperado:
+
+P.NOME	U.NOME	MATRÍCULA	SÉRIE	DISCIPLINA	NOTA
+Luiz	Silva	6215	1º ano	Português	8,0
+Alan	Vilela	3285	1º ano	História	8,0
+3. Project: Exibir apenas os nomes e as notas dos alunos
+Consulta SQL:
+
+sql
+Copiar código
+SELECT P.NOME, NOTA 
+FROM ALUNO;
+Resultado esperado:
+
+P.NOME	NOTA
+Vitória	7,0
+Luiz	8,0
+André	9,5
+Alan	8,0
+Figueiredo	9,0
+4. Criar tabela PROFESSOR (com primeiro e último nome)
+Consulta SQL:
+
+sql
+Copiar código
+CREATE TABLE PROFESSOR AS 
+SELECT P.NOME, U.NOME 
+FROM PROFESSOR;
+Resultado esperado:
+
+Tabela PROFESSOR criada contendo duas colunas, "P.NOME" e "U.NOME", com o primeiro e último nome dos professores.
+5. Criar tabela ALUNO (com primeiro e último nome)
+Consulta SQL:
+
+sql
+Copiar código
+CREATE TABLE ALUNO_NOMES AS 
+SELECT P.NOME, U.NOME 
+FROM ALUNO;
+Resultado esperado:
+
+Tabela ALUNO_NOMES criada contendo as colunas "P.NOME" e "U.NOME", que são o primeiro e último nome de cada aluno.
+6. União entre a tabela ALUNO (PNome, UNome) e a tabela PROFESSOR
+Consulta SQL:
+
+sql
+Copiar código
+SELECT P.NOME, U.NOME 
+FROM ALUNO_NOMES
+UNION
+SELECT P.NOME, U.NOME 
+FROM PROFESSOR;
+Resultado esperado:
+
+A operação de união exibirá todos os primeiros e últimos nomes que estão presentes nas tabelas ALUNO e PROFESSOR, sem duplicatas.
+7. Intersecção entre a tabela ALUNO (PNome, UNome) e a tabela PROFESSOR
+Consulta SQL:
+
+sql
+Copiar código
+SELECT P.NOME, U.NOME 
+FROM ALUNO_NOMES
+INTERSECT
+SELECT P.NOME, U.NOME 
+FROM PROFESSOR;
+Resultado esperado:
+
+A operação de intersecção mostrará apenas os nomes que estão presentes tanto na tabela ALUNO quanto na tabela PROFESSOR.
+8. Diferença entre a tabela ALUNO (PNome, UNome) e a tabela PROFESSOR
+Consulta SQL:
+
+sql
+Copiar código
+SELECT P.NOME, U.NOME 
+FROM ALUNO_NOMES
+EXCEPT
+SELECT P.NOME, U.NOME 
+FROM PROFESSOR;
+Resultado esperado:
+
+A operação de diferença exibirá os nomes que estão presentes na tabela ALUNO e não estão presentes na tabela PROFESSOR.
