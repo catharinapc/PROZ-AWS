@@ -1,0 +1,22 @@
+No desenvolvimento de um projeto de banco de dados, o projeto conceitual é uma das primeiras etapas e tem como objetivo definir a estrutura lógica dos dados, representando-os através de entidades e seus relacionamentos. Vou criar uma entidade fictícia chamada Cliente, que inclui diferentes tipos de atributos: simples, composto e multivalorado.
+
+Entidade: Cliente
+Atributos:
+ID_Cliente (Simples): Um identificador único para o cliente.
+
+Tipo: Número
+Exemplo: 12345
+Nome_Cliente (Composto): O nome completo do cliente, que pode ser dividido em partes menores.
+
+Subatributos:
+Primeiro_Nome: Exemplo: João
+Sobrenome: Exemplo: Silva
+Telefones (Multivalorado): Um cliente pode ter mais de um número de telefone.
+
+Tipo: Lista de números de telefone
+Exemplo: (11) 99999-9999, (11) 98888-8888
+Resumo:
+Atributo simples: Aquele que não pode ser dividido, como o ID_Cliente.
+Atributo composto: Aquele que pode ser decomposto em outros atributos menores, como Nome_Cliente.
+Atributo multivalorado: Aquele que pode ter mais de um valor associado, como Telefones.
+Essa entidade Cliente serviria como um exemplo de estrutura básica em um modelo conceitual de banco de dados, representando um cliente com suas principais características.
