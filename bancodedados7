@@ -1,0 +1,128 @@
+Criar a base de dados:
+sql
+Copiar código
+CREATE DATABASE Escola;
+USE Escola;
+Criar as tabelas:
+Tabela Aluno
+sql
+Copiar código
+CREATE TABLE Aluno (
+    AlunoID INT PRIMARY KEY AUTO_INCREMENT,
+    PrimeiroNome VARCHAR(50),
+    UltimoNome VARCHAR(50),
+    DataNascimento DATE,
+    Serie INT
+);
+Tabela Professor
+sql
+Copiar código
+CREATE TABLE Professor (
+    ProfessorID INT PRIMARY KEY AUTO_INCREMENT,
+    PrimeiroNome VARCHAR(50),
+    UltimoNome VARCHAR(50),
+    Disciplina VARCHAR(50)
+);
+Tabela Disciplina
+sql
+Copiar código
+CREATE TABLE Disciplina (
+    DisciplinaID INT PRIMARY KEY AUTO_INCREMENT,
+    NomeDisciplina VARCHAR(50)
+);
+Tabela Turma
+sql
+Copiar código
+CREATE TABLE Turma (
+    TurmaID INT PRIMARY KEY AUTO_INCREMENT,
+    NomeTurma VARCHAR(50),
+    ProfessorID INT,
+    DisciplinaID INT,
+    CONSTRAINT FK_Turma_Professor FOREIGN KEY (ProfessorID) REFERENCES Professor(ProfessorID),
+    CONSTRAINT FK_Turma_Disciplina FOREIGN KEY (DisciplinaID) REFERENCES Disciplina(DisciplinaID)
+);
+Tabela Matricula
+sql
+Copiar código
+CREATE TABLE Matricula (
+    MatriculaID INT PRIMARY KEY AUTO_INCREMENT,
+    AlunoID INT,
+    TurmaID INT,
+    DataMatricula DATE,
+    CONSTRAINT FK_Matricula_Aluno FOREIGN KEY (AlunoID) REFERENCES Aluno(AlunoID),
+    CONSTRAINT FK_Matricula_Turma FOREIGN KEY (TurmaID) REFERENCES Turma(TurmaID)
+);
+Inserir dados nas tabelas:
+Tabela Aluno
+sql
+Copiar código
+INSERT INTO Aluno (PrimeiroNome, UltimoNome, DataNascimento, Serie)
+VALUES 
+('Luiz', 'Silva', '2010-05-12', 8),
+('Maria', 'Oliveira', '2009-10-30', 9),
+('João', 'Santos', '2011-02-17', 7);
+Tabela Professor
+sql
+Copiar código
+INSERT INTO Professor (PrimeiroNome, UltimoNome, Disciplina)
+VALUES 
+('Carlos', 'Pereira', 'Matemática'),
+('Ana', 'Costa', 'História'),
+('José', 'Lima', 'Geografia');
+Tabela Disciplina
+sql
+Copiar código
+INSERT INTO Disciplina (NomeDisciplina)
+VALUES 
+('Matemática'),
+('História'),
+('Geografia');
+Tabela Turma
+sql
+Copiar código
+INSERT INTO Turma (NomeTurma, ProfessorID, DisciplinaID)
+VALUES 
+('8A', 1, 1), 
+('9B', 2, 2), 
+('7C', 3, 3);
+Tabela Matricula
+sql
+Copiar código
+INSERT INTO Matricula (AlunoID, TurmaID, DataMatricula)
+VALUES 
+(1, 1, '2024-01-15'), 
+(2, 2, '2024-01-15'), 
+(3, 3, '2024-01-15');
+Consultas com JOIN
+Exibir todos os alunos matriculados e suas turmas
+sql
+Copiar código
+SELECT Aluno.PrimeiroNome, Aluno.UltimoNome, Turma.NomeTurma
+FROM Matricula
+JOIN Aluno ON Matricula.AlunoID = Aluno.AlunoID
+JOIN Turma ON Matricula.TurmaID = Turma.TurmaID;
+Exibir os professores e as turmas que estão lecionando
+sql
+Copiar código
+SELECT Professor.PrimeiroNome, Professor.UltimoNome, Turma.NomeTurma
+FROM Turma
+JOIN Professor ON Turma.ProfessorID = Professor.ProfessorID;
+Exibir os alunos, as disciplinas e os professores responsáveis por cada turma
+sql
+Copiar código
+SELECT Aluno.PrimeiroNome, Aluno.UltimoNome, Disciplina.NomeDisciplina, Professor.PrimeiroNome AS ProfessorNome, Professor.UltimoNome AS ProfessorSobrenome
+FROM Matricula
+JOIN Aluno ON Matricula.AlunoID = Aluno.AlunoID
+JOIN Turma ON Matricula.TurmaID = Turma.TurmaID
+JOIN Disciplina ON Turma.DisciplinaID = Disciplina.DisciplinaID
+JOIN Professor ON Turma.ProfessorID = Professor.ProfessorID;
+Exibir todos os alunos matriculados em uma disciplina específica (por exemplo, Matemática)
+sql
+Copiar código
+SELECT Aluno.PrimeiroNome, Aluno.UltimoNome, Disciplina.NomeDisciplina
+FROM Matricula
+JOIN Aluno ON Matricula.AlunoID = Aluno.AlunoID
+JOIN Turma ON Matricula.TurmaID = Turma.TurmaID
+JOIN Disciplina ON Turma.DisciplinaID = Disciplina.DisciplinaID
+WHERE Disciplina.NomeDisciplina = 'Matemática';
+Esses comandos configuram a base e as tabelas, preenchem-nas com dados de exemplo e permitem a realização de diversas consultas relevantes ao contexto escolar.
