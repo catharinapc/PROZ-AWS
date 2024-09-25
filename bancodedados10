@@ -1,0 +1,30 @@
+. Confidencialidade
+Definição: A confidencialidade refere-se à proteção de informações contra acesso não autorizado.
+Implementações:
+Criptografia: Dados sensíveis, como informações de clientes e transações, devem ser criptografados tanto em repouso quanto em trânsito.
+Controle de Acesso: Utilize mecanismos robustos de controle de acesso, como autenticação multifator e níveis de permissão para diferentes usuários, garantindo que apenas pessoas autorizadas possam acessar dados sensíveis.
+2. Integridade
+Definição: A integridade garante que os dados sejam precisos e completos, evitando modificações não autorizadas.
+Implementações:
+Checksums e Hashing: Use algoritmos de checksum ou hashing para verificar a integridade dos dados durante a transferência e armazenamento.
+Validação de Dados: Implemente validações rigorosas durante a entrada de dados para prevenir a inserção de dados incorretos ou maliciosos.
+3. Disponibilidade
+Definição: A disponibilidade assegura que os dados estejam acessíveis e utilizáveis quando necessário.
+Implementações:
+Redundância: Configure a redundância de dados, utilizando backups regulares e replicação de bancos de dados para evitar perda de dados em caso de falhas.
+Monitoramento e Manutenção: Implemente monitoramento constante do sistema e procedimentos de manutenção para identificar e resolver problemas proativamente.
+4. Auditoria e Monitoramento
+Definição: A auditoria envolve o registro e a análise de acessos e alterações nos dados, permitindo identificar comportamentos suspeitos.
+Implementações:
+Logs de Acesso: Mantenha registros detalhados de todas as operações no banco de dados, incluindo acessos e modificações, que podem ser revisados para detectar atividades não autorizadas.
+Ferramentas de Monitoramento: Utilize ferramentas de monitoramento que alertem sobre atividades anômalas ou potenciais violações de segurança.
+5. Compliance (Conformidade)
+Definição: Garantir que o banco de dados esteja em conformidade com regulamentações e leis relacionadas à proteção de dados (ex: LGPD, GDPR).
+Implementações:
+Políticas de Privacidade: Desenvolva e implemente políticas de privacidade que expliquem como os dados dos clientes serão coletados, usados e protegidos.
+Treinamento de Funcionários: Realize treinamentos regulares para os funcionários sobre práticas de segurança da informação e conformidade.
+6. Resiliência
+Definição: A resiliência é a capacidade de um sistema de se recuperar rapidamente de falhas e ataques.
+Implementações:
+Planos de Resposta a Incidentes: Estabeleça um plano de resposta a incidentes que descreva como a empresa reagirá a violações de segurança.
+Teste de Segurança: Realize testes de segurança regulares, como testes de penetração, para identificar e corrigir vulnerabilidades.
